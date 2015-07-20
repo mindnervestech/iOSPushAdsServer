@@ -63,7 +63,7 @@ public class Application extends Controller {
     public static Result getAd(){
     	String appName = request().getQueryString("appName");
     	String folderName = request().getQueryString("folderName");
-    	String appPath = Play.application().path().getAbsolutePath()+"/"+appName;
+    	String appPath = Play.application().configuration().getString("path")+"/"+appName;
         File app = new File(appPath);
         if (!app.isDirectory()) {
         	return ok(Json.toJson(new ErrorResponse(Error.E404A.code,Error.E404A.message)));
